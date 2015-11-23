@@ -15,5 +15,5 @@ import javax.ejb.Local;
 public interface NameHandler {
     
     public String generateId(String userName);
-    public String greetingsMessage(String userName, String id);
+    public String greetingsMessage(String userName, String id, String language);
 }

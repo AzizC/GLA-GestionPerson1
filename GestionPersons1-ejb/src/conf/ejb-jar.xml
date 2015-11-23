@@ -1,0 +1,18 @@
+<ejb-jar>
+    <interceptors>
+        <interceptor>
+        <interceptor-class>
+            interceptors.ApplicationLogger
+        </interceptor-class>
+        </interceptor>
+    </interceptors>
+    
+    <assembly-descriptor>
+        <interceptor-binding>
+            <ejb-name>*</ejb-name>
+            <interceptor-class>
+                interceptors.ApplicationLogger
+            </interceptor-class>
+        </interceptor-binding>
+    </assembly-descriptor>
+</ejb-jar>

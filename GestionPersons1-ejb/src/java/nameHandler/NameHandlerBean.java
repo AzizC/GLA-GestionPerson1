@@ -5,6 +5,8 @@
  */
 package nameHandler;
 
+import interceptors.DoUpperCaseInterceptor.DoUpper;
+import interceptors.UpperCaseVerificationInterceptor.VerifUpper;
 import javax.ejb.Stateless;
 
 /**
@@ -25,8 +27,10 @@ public class NameHandlerBean implements NameHandler {
         return userName+""+random;
     }
     
+    //@DoUpper
+    @VerifUpper
     @Override
-    public String greetingsMessage(String userName, String id){
-        return "Bonjour "+userName+" ("+id+")"+" !";
+    public String greetingsMessage(String userName, String id, String language){
+        return "Bonjour "+userName+" ("+id+")"+" ! (Language = "+language+" )";
     }
 }

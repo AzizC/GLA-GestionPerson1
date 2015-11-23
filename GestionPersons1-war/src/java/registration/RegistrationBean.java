@@ -79,6 +79,6 @@ public class RegistrationBean {
     }
     
     public String registeredUser(){
-         return nameHandlerBean.greetingsMessage(lastname, nickname);
+         return nameHandlerBean.greetingsMessage(lastname, nickname, language);
     }
 }
