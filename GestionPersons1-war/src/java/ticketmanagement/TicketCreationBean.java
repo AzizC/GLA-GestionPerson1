@@ -116,6 +116,7 @@ public class TicketCreationBean implements Serializable {
             ticketManager.addTopic(topic);
         } catch (WorkflowViolationException ex) {
             Logger.getLogger(TicketCreationBean.class.getName()).log(Level.SEVERE, null, ex);
+            return "helpdesk_KO";
         }
         
         return "helpdesk";
@@ -133,6 +134,7 @@ public class TicketCreationBean implements Serializable {
             ticketManager.addIssue(issue);
         } catch (WorkflowViolationException ex) {
             Logger.getLogger(TicketCreationBean.class.getName()).log(Level.SEVERE, null, ex);
+            return "helpdesk_KO";
         }
         return "helpdesk_OK";
     }
