@@ -6,6 +6,7 @@
 package listPersons;
 
 import interceptors.DoUpperCaseInterceptor.DoUpper;
+import interceptors.UpperCaseVerificationInterceptor.VerifUpper;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,18 +49,21 @@ public class PersonManagerBean implements PersonManager {
         }
     }
     
+    @DoUpper
     @Override
     public void register(Person person) {
         try {
             
             Statement smt = connection.createStatement();
-            smt.execute("INSERT INTO PERSONS(NICKNAME,FIRSTNAME,LASTNAME) VALUES("
+            smt.execute("INSERT INTO PERSONS(NICKNAME,FIRSTNAME,LASTNAME, LANGUAGE) VALUES("
                     + "\'"
                     + person.getNickName()
                     + "\',\'"
                     + person.getFirstName()
                     + "\',\'"
-                    + person.getLastName() + "\')");
+                    + person.getLastName() 
+                    + "\',\'"
+                    + person.getLanguage()+ "\')");
            
             
         } catch (SQLException sqle) {
@@ -78,7 +82,8 @@ public class PersonManagerBean implements PersonManager {
             ResultSet rs  = smt.executeQuery("SELECT * FROM PERSONS");
             
             while(rs.next()){
-                list.add(new Person(rs.getString("firstname"), rs.getString("lastname"), rs.getString("nickname")));
+                list.add(new Person(rs.getString("firstname"), rs.getString("lastname"), 
+                        rs.getString("nickname"), rs.getString("language")));
             }
             
          } catch (SQLException sqle) {

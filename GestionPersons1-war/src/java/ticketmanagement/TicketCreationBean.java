@@ -7,18 +7,14 @@ package ticketmanagement;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 import persistence.Person;
-import persistence.Ticket;
 import ticketsManagement.TicketManager;
 import ticketsManagement.WorkflowViolationException;
 
@@ -104,7 +100,7 @@ public class TicketCreationBean implements Serializable {
             Logger.getLogger(TicketCreationBean.class.getName()).log(Level.SEVERE, null, ex);
         }
          
-        ticketManager.addCustomer(new Person(firstname, lastname, ""));
+        ticketManager.addCustomer(new Person(firstname, lastname, "", ""));
         return "helpdesk";
     }
     

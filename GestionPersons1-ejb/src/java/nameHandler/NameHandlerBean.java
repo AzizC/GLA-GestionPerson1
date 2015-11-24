@@ -6,6 +6,7 @@
 package nameHandler;
 
 import interceptors.DoUpperCaseInterceptor.DoUpper;
+import interceptors.ProfilingInterceptor.Profile;
 import interceptors.UpperCaseVerificationInterceptor.VerifUpper;
 import javax.ejb.Stateless;
 
@@ -13,6 +14,7 @@ import javax.ejb.Stateless;
  *
  * @author chafi4u
  */
+@Profile
 @Stateless
 public class NameHandlerBean implements NameHandler {
 
@@ -27,7 +29,6 @@ public class NameHandlerBean implements NameHandler {
         return userName+""+random;
     }
     
-    //@DoUpper
     @VerifUpper
     @Override
     public String greetingsMessage(String userName, String id, String language){

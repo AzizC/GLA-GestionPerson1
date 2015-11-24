@@ -11,7 +11,6 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
-import java.util.Date;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InterceptorBinding;
@@ -39,10 +38,6 @@ public class ProfilingInterceptor {
             startTime = System.currentTimeMillis();  
             return ic.proceed();    
         } finally {
-            
-            Date d = new Date();
-            System.out.println("PROFILING: method "+ ic.getMethod().getName()+" in class "+ic.getTarget()
-            +"\n called "+d.toString());
             
             double finTime = System.currentTimeMillis();
             double totalTime = (double) ((finTime - startTime)); 

@@ -73,7 +73,7 @@ public class RegistrationBean {
             nickname = nameHandlerBean.generateId(lastname);
         }
         
-        personManager.register(new Person(firstname, lastname, nickname));
+        personManager.register(new Person(firstname, lastname, nickname, language));
         
         return "registrationOK";
     }

@@ -15,6 +15,7 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InterceptorBinding;
 import javax.interceptor.InvocationContext;
+import persistence.Person;
 
 /**
  *
@@ -30,13 +31,12 @@ public class DoUpperCaseInterceptor {
     public @interface DoUpper {}
     
     @AroundInvoke
-    public Object doUpperCase(InvocationContext ic) throws Exception {
-        Object[] params = ic.getParameters();
-        String name = (String) params[2];
-        if(!name.matches("[A-Z]+")){
-            params[2] = name.toUpperCase();
-            ic.setParameters(params);
+    public Object doUpperCase(InvocationContext ic) throws Exception {      
+        Person p = (Person) ic.getParameters()[0];
+        String language = p.getLanguage();
+        if(!language.matches("[A-Z]+")){
+            p.setLanguage(language.toUpperCase());
         }
-        return ic.proceed();        
+        return ic.proceed(); 
     } 
 }

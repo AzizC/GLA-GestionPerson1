@@ -34,10 +34,10 @@ public class StartupSingletonBean implements StartupSingleton {
     
     @PostConstruct
     private void registerUsers(){
-        personManager.register(new Person("Aziz", "Chafi", "Chafi1"));
-        personManager.register(new Person("Nicolas", "Jukic", "Jukic1"));
-        personManager.register(new Person("Bachir", "Arif", "Arif1"));
-        personManager.register(new Person("Amine", "ElGzouli", "ElGzouli1"));
+        personManager.register(new Person("Aziz", "Chafi", "Chafi1", "FR"));
+        personManager.register(new Person("Nicolas", "Jukic", "Jukic1", "FR"));
+        personManager.register(new Person("Bachir", "Arif", "Arif1", "FR"));
+        personManager.register(new Person("Amine", "ElGzouli", "ElGzouli1", "FR"));
         selectRandomWinner();
     }
     

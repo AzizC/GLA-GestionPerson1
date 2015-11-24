@@ -16,6 +16,7 @@ import javax.interceptor.InterceptorBinding;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
+import persistence.Person;
 
 /**
  *
@@ -33,8 +34,9 @@ public class UpperCaseVerificationInterceptor {
     
     @AroundInvoke
     public Object upperCaseVerif(InvocationContext ic) throws Exception {
-        String name = (String) ic.getParameters()[2];
-        if(!name.matches("[A-Z]+")){
+        Object[] params = ic.getParameters();
+        String language = (String) params[2];
+        if(!language.matches("[A-Z]+")){
             System.out.println("CAPITALIZE: Oups, parameters of "+ic.getTarget()+" are not in capitals !!!");
         }
         return ic.proceed();        
